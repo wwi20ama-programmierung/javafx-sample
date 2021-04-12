@@ -7,6 +7,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -110,10 +112,32 @@ public class Main extends Application {
             children.add(imageView);
         }
 
-        root.setRight(rightSidebarFlowPane);
+        // root.setRight(rightSidebarFlowPane);
+
+        // Tabelle in der linken Sidebar anzeigen
+        addTableView(root);
 
         root.setBottom(buttonHBox);
 
         stage.setScene(scene);
+    }
+
+    public static void addTableView(BorderPane root) {
+        TableView tableView = new TableView();
+
+        // Spalten hinzufügen
+        ObservableList<TableColumn> tableColumns = tableView.getColumns();
+        TableColumn tableColumnFirstname = new TableColumn();
+        tableColumnFirstname.setText("Vorname");
+
+        TableColumn tableColumnLastname = new TableColumn();
+        tableColumnLastname.setText("Nachname");
+
+        tableColumns.addAll(tableColumnFirstname, tableColumnLastname);
+
+        // tableView.getItems();
+
+        root.setLeft(tableView);
+
     }
 }
