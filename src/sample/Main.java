@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -125,18 +126,29 @@ public class Main extends Application {
     public static void addTableView(BorderPane root) {
         TableView tableView = new TableView();
 
-        // Spalten hinzufügen
+        // Spalte für "Vorname" hinzufügen
         ObservableList<TableColumn> tableColumns = tableView.getColumns();
         TableColumn tableColumnFirstname = new TableColumn();
         tableColumnFirstname.setText("Vorname");
+        tableColumnFirstname.setCellValueFactory(new PropertyValueFactory<>("firstname"));
 
+        // Spalte für "Nachname" hinzufügen
         TableColumn tableColumnLastname = new TableColumn();
         tableColumnLastname.setText("Nachname");
+        tableColumnLastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
 
         tableColumns.addAll(tableColumnFirstname, tableColumnLastname);
 
-        // tableView.getItems();
+        // Zeilen hinzufügen
+        ObservableList tableRows = tableView.getItems();
 
+        Student student1 = new Student("Max" ,"Mustermann");
+        Student student2 = new Student("Erika" ,"Mustermann");
+        Student student3 = new Student("Anna" ,"Mustermann");
+
+        tableRows.addAll(student1, student2, student3);
+
+        // Als linke Sidebar hinzufügen
         root.setLeft(tableView);
 
     }
