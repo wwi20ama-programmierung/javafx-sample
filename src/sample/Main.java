@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -29,7 +30,7 @@ public class Main extends Application {
                 System.out.println("Source: " + event.getSource().getClass() + ", Target: " + event.getTarget().getClass() + ". Der Text wurde angeklickt!");
             }
         };
-        someText.addEventHandler(MouseEvent.MOUSE_CLICKED, eventHandler);
+            someText.addEventHandler(MouseEvent.MOUSE_CLICKED, eventHandler);
 
         // Root-Knoten erzeugen und Text-Objekt hinzufügen
         Group group = new Group();
@@ -43,6 +44,8 @@ public class Main extends Application {
         // Erkenntnis: Sowohl für die Szene als auch für das Text-Element wird das Event ausgelöst
         scene1.addEventHandler(MouseEvent.MOUSE_CLICKED, eventHandler);
 
+        addLayouts(primaryStage);
+
         // Titel des Fensters ändern
         primaryStage.setTitle("Beispielapplikation zur Vorlesung am 09.04.2021");
 
@@ -54,5 +57,24 @@ public class Main extends Application {
     public static void main(String[] args) {
         System.out.println("Hello World");
         launch(args);
+    }
+
+    public static void addLayouts(Stage stage) {
+        BorderPane root = new BorderPane();
+        Scene scene = new Scene(root, 1000, 500);
+
+        Text text1 = new Text("Links");
+        Text text2 = new Text("Mitte");
+        Text text3 = new Text("Rechts");
+        Text text4 = new Text("Unten");
+        Text text5 = new Text("Oben");
+
+        root.setLeft(text1);
+        root.setCenter(text2);
+        root.setRight(text3);
+        root.setBottom(text4);
+        root.setTop(text5);
+
+        stage.setScene(scene);
     }
 }
