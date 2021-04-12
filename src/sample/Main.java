@@ -6,8 +6,11 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -63,17 +66,35 @@ public class Main extends Application {
         BorderPane root = new BorderPane();
         Scene scene = new Scene(root, 1000, 500);
 
-        Text text1 = new Text("Links");
         Text text2 = new Text("Mitte");
         Text text3 = new Text("Rechts");
-        Text text4 = new Text("Unten");
         Text text5 = new Text("Oben");
 
-        root.setLeft(text1);
         root.setCenter(text2);
         root.setRight(text3);
-        root.setBottom(text4);
         root.setTop(text5);
+
+        // Texte in der linken Sidebar des Layouts anzeigen
+        VBox leftSideBarVBox = new VBox();
+        leftSideBarVBox.setSpacing(10.0);
+
+        Text sidebarText1 = new Text("Element 1");
+        Text sidebarText2 = new Text("Element 2");
+
+        leftSideBarVBox.getChildren().addAll(sidebarText1, sidebarText2);
+
+        root.setLeft(leftSideBarVBox);
+
+        // Buttons im Footer des Layouts anzeigen
+        HBox buttonHBox = new HBox();
+        buttonHBox.setSpacing(15.0);
+
+        Button addButton = new Button("Hinzufügen");
+        Button deleteButton = new Button("Löschen");
+
+        buttonHBox.getChildren().addAll(addButton, deleteButton);
+
+        root.setBottom(buttonHBox);
 
         stage.setScene(scene);
     }
