@@ -72,10 +72,8 @@ public class Main extends Application {
         BorderPane root = new BorderPane();
         Scene scene = new Scene(root, 1000, 500);
 
-        Text text2 = new Text("Mitte");
         Text text5 = new Text("Oben");
 
-        root.setCenter(text2);
         root.setTop(text5);
 
         // Texte in der linken Sidebar des Layouts anzeigen
@@ -142,11 +140,25 @@ public class Main extends Application {
         // Zeilen hinzufügen
         ObservableList tableRows = tableView.getItems();
 
-        Student student1 = new Student("Max" ,"Mustermann");
-        Student student2 = new Student("Erika" ,"Mustermann");
-        Student student3 = new Student("Anna" ,"Mustermann");
+        Student student1 = new Student("Max" ,"Mustermann", "max.mustermann@email.com", "Eine Straße 123, 12345 Musterstadt", 12156);
+        Student student2 = new Student("Erika" ,"Mustermann", "erika.mustermann@email.com", "Eine andere Straße 45, 12345 Musterstadt", 78978);
+        Student student3 = new Student("Anna" ,"Mustermann", "anna.mustermann@email.com", "Anderer Weg 79, 12345 Musterstadt", 72114);
 
         tableRows.addAll(student1, student2, student3);
+
+        // StudentDetailsLayout initialisieren und in der Mitte der BorderPane einhängen
+        StudentDetailsLayout studentDetailsLayout = new StudentDetailsLayout();
+        root.setCenter(studentDetailsLayout.getLayoutRoot());
+
+        tableView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                // int selectedIndex = tableView.getSelectionModel().getSelectedIndex();
+                Student selectedItem = (Student) tableView.getSelectionModel().getSelectedItem();
+                studentDetailsLayout.setStudent(selectedItem);
+                // Object getSelectedItem = tableRows.get(selectedIndex);
+            }
+        });
 
         // Als linke Sidebar hinzufügen
         root.setLeft(tableView);
