@@ -39,6 +39,10 @@ public class MainView implements IView {
         this.layoutRoot.setBottom(node);
     }
 
+    public Node getContentLeft() {
+        return this.layoutRoot.getLeft();
+    }
+
     @Override
     public Node getLayoutRoot() {
         return this.layoutRoot;

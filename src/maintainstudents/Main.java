@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import maintainstudents.controller.MainController;
 import maintainstudents.view.fragment.DetailFragment;
 import maintainstudents.view.MainView;
 import maintainstudents.view.fragment.MasterFragment;
@@ -19,6 +20,8 @@ public class Main extends Application {
         MainView mainView = new MainView(primaryStage);
         mainView.setContentLeft(new MasterFragment().getLayoutRoot());
         mainView.setContentCenter(new DetailFragment().getLayoutRoot());
+
+        MainController mainController = new MainController(mainView);
 
         // Titel des Fensters ändern
         primaryStage.setTitle("Beispielapplikation zur Vorlesung am 09.04.2021");
