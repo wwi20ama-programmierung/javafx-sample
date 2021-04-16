@@ -1,11 +1,12 @@
-package sample;
+package maintainstudents.view.fragment;
 
 import javafx.collections.ObservableList;
-import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import maintainstudents.model.Student;
+import maintainstudents.view.IView;
 
-public class StudentDetailsLayout {
+public class StudentDetailsFragment implements IView {
     private Text firstnameText;
     private Text lastnameText;
     private Text postalAddressText;
@@ -13,7 +14,7 @@ public class StudentDetailsLayout {
     private Text matriculationNumberText;
     private VBox layoutRoot;
 
-    public StudentDetailsLayout() {
+    public StudentDetailsFragment() {
         init();
     }
 

@@ -1,4 +1,4 @@
-package sample;
+package maintainstudents.model;
 
 public class Student {
     private String firstname;
