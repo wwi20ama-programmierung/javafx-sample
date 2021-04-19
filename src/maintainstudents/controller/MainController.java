@@ -1,6 +1,5 @@
 package maintainstudents.controller;
 
-import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
@@ -21,10 +20,9 @@ public class MainController extends Controller {
 
         MainView mainView = (MainView) this.view;
         TableView tableView = (TableView) mainView.getContentLeft();
-        // Zeilen hinzufügen
-        ObservableList tableRows = tableView.getItems();
 
-        tableRows.addAll(this.dataProvider.getStudentList());
+        // Wir setzen die ObservableList aus dem DataProvider als Items in der TableView (= Binding)
+        tableView.setItems(this.dataProvider.getStudentList());
 
         addTableClickListeners();
     }
@@ -44,7 +42,7 @@ public class MainController extends Controller {
                     // Bei einem Klick auf leere Zeilen ist selectedStudent == null
                     if(selectedStudent != null) {
                         selectedStudent.setFirstname("Test");
-                        dataProvider.getStudentList().add(selectedStudent);
+                        dataProvider.addStudent(selectedStudent);
                     }
                 }
             });

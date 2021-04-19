@@ -1,16 +1,21 @@
 package maintainstudents.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class DataProvider {
-    private List<Student> studentList = new ArrayList<>();
+    // Neue Observable List für Studierenden-Objekte erzeugen
+    private ObservableList<Student> studentList = FXCollections.observableArrayList();
 
-    public List<Student> getStudentList() {
+    public ObservableList<Student> getStudentList() {
         return studentList;
     }
 
-    public void setStudentList(List<Student> studentList) {
+    public void setStudentList(ObservableList<Student> studentList) {
         this.studentList = studentList;
+    }
+
+    public void addStudent(Student student) {
+        this.studentList.add(student);
     }
 }
