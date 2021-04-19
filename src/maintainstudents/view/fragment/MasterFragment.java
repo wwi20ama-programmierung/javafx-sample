@@ -5,12 +5,11 @@ import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import maintainstudents.model.Student;
 import maintainstudents.view.IView;
 
 public class MasterFragment implements IView {
 
-    private Node layoutRoot;
+    private TableView layoutRoot;
 
     public MasterFragment() {
         init();
@@ -31,15 +30,6 @@ public class MasterFragment implements IView {
         tableColumnLastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
 
         tableColumns.addAll(tableColumnFirstname, tableColumnLastname);
-
-        // Zeilen hinzufügen
-        ObservableList tableRows = tableView.getItems();
-
-        Student student1 = new Student("Max" ,"Mustermann", "max.mustermann@email.com", "Eine Straße 123, 12345 Musterstadt", 12156);
-        Student student2 = new Student("Erika" ,"Mustermann", "erika.mustermann@email.com", "Eine andere Straße 45, 12345 Musterstadt", 78978);
-        Student student3 = new Student("Anna" ,"Mustermann", "anna.mustermann@email.com", "Anderer Weg 79, 12345 Musterstadt", 72114);
-
-        tableRows.addAll(student1, student2, student3);
 
         this.layoutRoot = tableView;
 
