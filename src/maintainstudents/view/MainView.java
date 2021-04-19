@@ -7,6 +7,8 @@ import javafx.stage.Stage;
 
 public class MainView implements IView {
 
+    private static final int SCENE_HEIGHT = 720;
+    private static final int SCENE_WIDTH = 1280;
     private Stage stage;
     private BorderPane layoutRoot;
 
@@ -18,7 +20,7 @@ public class MainView implements IView {
     private void init() {
         BorderPane borderPane = new BorderPane();
         this.layoutRoot = borderPane;
-        Scene scene = new Scene(borderPane);
+        Scene scene = new Scene(borderPane, SCENE_WIDTH, SCENE_HEIGHT);
 
         this.stage.setScene(scene);
     }
@@ -41,6 +43,10 @@ public class MainView implements IView {
 
     public Node getContentLeft() {
         return this.layoutRoot.getLeft();
+    }
+
+    public Node getContentFooter() {
+        return this.layoutRoot.getBottom();
     }
 
     @Override

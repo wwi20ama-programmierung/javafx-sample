@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import maintainstudents.controller.MainController;
 import maintainstudents.model.DataProvider;
 import maintainstudents.model.Student;
+import maintainstudents.view.fragment.AddStudentButtonFragment;
 import maintainstudents.view.fragment.DetailFragment;
 import maintainstudents.view.MainView;
 import maintainstudents.view.fragment.MasterFragment;
@@ -29,6 +30,7 @@ public class Main extends Application {
         MainView mainView = new MainView(primaryStage);
         mainView.setContentLeft(new MasterFragment().getLayoutRoot());
         mainView.setContentCenter(new DetailFragment().getLayoutRoot());
+        mainView.setContentFooter(new AddStudentButtonFragment().getLayoutRoot());
 
         MainController mainController = new MainController(mainView, dataProvider);
 

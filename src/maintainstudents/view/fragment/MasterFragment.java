@@ -32,16 +32,6 @@ public class MasterFragment implements IView {
         tableColumns.addAll(tableColumnFirstname, tableColumnLastname);
 
         this.layoutRoot = tableView;
-
-        /*tableView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                // int selectedIndex = tableView.getSelectionModel().getSelectedIndex();
-                Student selectedItem = (Student) tableView.getSelectionModel().getSelectedItem();
-                studentDetailsLayout.setStudent(selectedItem);
-                // Object getSelectedItem = tableRows.get(selectedIndex);
-            }
-        });*/
     }
 
     @Override
